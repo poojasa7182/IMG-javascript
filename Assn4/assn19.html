@@ -1,11 +1,80 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Assignment19</title>
     </head>
-    <body>
+    <body onload="checkCookie()" style="font-size: 50px;">
+        <div id="visits"></div>
+        <div id="time"></div>
         <script>
-            alert("Hello World");
+            //window.onload(checkCookie());
+            function checkCookie() {
+                var user = getCookie("username");
+                var lastVisit = getCookie("lastVisit");
+                var freq = getCookie("freq");
+                //date time
+                if(lastVisit!=""){
+                    document.getElementById("time").innerHTML= "You last visited at "+lastVisit;
+                    lastVisit = new Date();
+                    setCookie1("lastVisit",lastVisit);
+                }
+                else{
+                    document.getElementById("time").innerHTML="You have visited 1st time.";
+                    lastVisit = new Date();
+                    setCookie1("lastVisit",lastVisit);
+                }
+                //number of visits
+                if(freq!=""){
+                    freq++;
+                    document.getElementById("visits").innerHTML="You have visited "+ (freq) +" time.";
+                    setCookie1("freq",freq);
+                }
+                else{
+                    freq = 1;
+                    setCookie1("freq",freq);
+                }
+                //user
+                if (user != "") {
+                    alert("Welcome back " + user);
+                } else {
+                    alert("You are visiting the first time!!")
+                    user = prompt("Please enter your name:", "");
+                    if (user != "" && user != null) {
+                        setCookie("username", user, 365);
+                    }
+                }
+            }
+
+            function setCookie(cname, cvalue, exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                var lastVisit = d.getTime();
+                var expires = "expires="+d.toUTCString();
+                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+            }
+            function setCookie1(cname, cvalue) {
+                document.cookie = cname + "=" + cvalue + ";";
+            }
+
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for(var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+
+            
         </script>
     </body>
 </html>
