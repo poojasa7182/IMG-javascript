@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Assignment17</title>
+    </head>
+    <body>
+        <img id="img1" onclick="fn1()" style="height: 300px; width: 500px;" src="img1.jfif"><br>
+        <input onclick="fn2()" style="width: 500px;" id="btn" value="close window/tab" type="button">
+        <script>
+            var newWindow;  
+            function fn1(){ 
+                newWindow = window.open(   
+                    "https://www.google.com/", "_blank");     
+            }
+            function fn2() {   
+                newWindow.close();   
+            }  
+        </script>
+    </body>
+</html>

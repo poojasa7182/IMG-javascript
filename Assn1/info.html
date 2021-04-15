@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Assignment1</title>
+        <link rel="stylesheet" href="info.css">
+    </head>
+    <body style="font-size: 50px;">
+        <form>
+            <div>
+                Name:
+                <input id="name" class="inputs" onkeyup="validateName()" type="text" >
+                <label id="namePrompt" class="labels"></label>
+            </div>
+            <div>
+                E-mail:
+                <input id="Email" class="inputs" onkeyup="validateEmail()" type="text">
+                <label id="emailPrompt" class="labels"></label>
+            </div>
+            <div>
+                Password:
+                <input id="Password" type="text" onkeyup="validatePass()" class="inputs">
+                <label id="passPrompt" class="labels"></label>
+            </div>
+            <div>
+                Confirm-password:
+                <input id="Confirm-password"type="text" onkeyup="validateCoPass()" class="inputs">
+                <label id="coPassPrompt"></label>
+            </div>
+            <div>
+                Gender:
+                <input type="text" class="inputs"></input><label></label>
+            </div>
+            <div>
+                Age:
+                <input id="Age" type="text" onkeyup="validateAge()" class="inputs">
+                <label id="agePrompt"></label>
+            </div>
+            <div>
+                City:
+                <input id="City" type="text" onkeyup="validateCity()" class="inputs">
+                <label id="cityPrompt"></label>
+            </div>
+            <div>
+                Phone No.:
+                <input id="phnNo" type="text" onkeyup="validatePhnNo()" class="inputs">
+                <label id="phnNoPrompt"></label>
+            </div>
+            <div>
+                <label for="Edu. Qualification">Educational Qualification:</label>
+                <select id="" name="">
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                </select>
+            </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+        <script src="info.js"></script>
+    </body>
+</html>

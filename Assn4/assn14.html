@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Assignment14</title>
+        <script>
+            var count = 0;
+            function increment(){
+                count++;
+                if(count>2){
+                    document.querySelector("img").src="img2.jfif";
+                }
+                if(count>4){
+                    document.querySelector("img").src="img3.jfif";
+                }
+                if(count>6){
+                    document.querySelector("img").src="img4.jfif";
+                }
+                if(count>8){
+                    document.querySelector("img").src="img5.jfif";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <img onclick="increment()" style="width: 600px ; height: 400px;" src="img1.jfif">
+    </body>
+</html>

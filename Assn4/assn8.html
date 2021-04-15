@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Assignment8</title>
+    </head>
+    <body>
+        <img id="img1" src="img1.jfif">
+        <script>
+            document.getElementById("img1").addEventListener("mouseover",function(){
+                document.getElementById("img1").src = "img2.jfif";
+            })
+            document.getElementById("img1").addEventListener("mouseout",function(){
+                document.getElementById("img1").src = "img1.jfif";
+            })
+        </script>
+    </body>
+</html>

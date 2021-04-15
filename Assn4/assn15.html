@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Assignment15</title>
+        <script>
+            var count = 0;
+            function increment(){
+                count++;
+                if(count>=4){
+                    count=4;
+
+                }
+                console.log(count);
+
+            }
+            function decrement(){
+                count--;
+                if(count<0){
+                    count=0;
+                }
+                console.log(count);
+            }
+            function check(){
+                var name1 = "img"+(count+1)+".jfif"
+                console.log(name1);
+                document.querySelector("img").src= name1; 
+                if(count>0){
+                    document.querySelector("#prev").style.display="inline"; 
+                } 
+                if(count==0){
+                    document.querySelector("#prev").style.display="none"; 
+                } 
+                if(count==4){
+                    document.querySelector("#next").style.visibility="hidden"; 
+                } 
+                if(count<4){
+                    document.querySelector("#next").style.display="inline";
+                    document.querySelector("#next").style.visibility="visible"; 
+                } 
+            }    
+        </script>
+    </head>
+    <body>
+        <img style="width: 600px  ; height: 400px;" src="img1.jfif">
+        <br>
+        <button id="next" onclick="increment(), check()" style="width: 300px;">Next image</button>
+        <button id="prev" onclick="decrement(), check()" style="width: 300px;display:none;">Previous image</button>
+    </body>
+</html>

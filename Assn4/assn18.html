@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Assignment18</title>
+    </head>
+    <body>
+        <img id="img1" onclick="fn1()" style="height: 300px; width: 500px;" src="img1.jfif"><br>
+        <input onclick="fn2()" style="width: 500px;" id="btn" value="close window/tab" type="button">
+        <script>
+            var newWindow = [];  
+            function fn1(){ 
+                newWindow[0] = window.open("https://www.google.com/", "_blank", "width=200px", "height=200px","postion:absolute","top:0");
+                newWindow[1] = window.open("https://www.google.com/", "_blank", "width=200px", "height=200px","postion:absolute","bottom:0");
+                newWindow[2] = window.open("https://www.google.com/", "_blank", "width=200px", "height=200px","postion:absolute","top:0","right=0");
+                newWindow[3] = window.open("https://www.google.com/", "_blank", "width=200px", "height=200px","postion:absolute","top:30%","left=30%");
+                newWindow[4] = window.open("https://www.google.com/", "_blank", "width=200px", "height=200px","postion:absolute","bottom:0","right=0");     
+            }
+            function fn2() {   
+                for(var i = 0 ; i <5 ; i++){
+                    newWindow[i].close();
+                }
+                   
+            }  
+        </script>
+    </body>
+</html>
