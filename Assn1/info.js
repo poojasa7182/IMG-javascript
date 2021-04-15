@@ -160,17 +160,17 @@ function validateEdu(){
 function validateGen(){
     var gen = document.forms["forms"]["gender"];
     if(gen[0].checked==false&&gen[1].checked==false&&gen[2].checked==false){
-        producePrompt("Gender is required!!" , "genPrompt" , "red");
+        //producePrompt("Gender is required!!" , "genPrompt" , "red");
         return false;
     }
     else{
-        nowOk("genPrompt");
+        //nowOk("genPrompt");
         return true;      
     }
 }
 //validate all
 function validate(){
-    if(validateGen()&&validateEdu()&&validateCity()&&validatePhnNo()&&validateAge()&&validateCoPass()&&validatePass()&&validateEmail()&&validateName()){
+    if(validateEdu()&&validateCity()&&validatePhnNo()&&validateAge()&&validateCoPass()&&validatePass()&&validateEmail()&&validateName()){
 
     }
     else{
