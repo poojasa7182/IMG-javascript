@@ -111,7 +111,7 @@ function validateAge(){
     }
 }
 //PhoneNo.
-function validateAge(){
+function validatePhnNo(){
     var phnE = document.getElementById("phnNo").value;
     var phn = phnE.trim();
     if(phn.length==0){
