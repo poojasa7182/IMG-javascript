@@ -53,6 +53,9 @@ function load(id , url){
                 document.getElementById(id).appendChild(mainDiv);
             }
         }
+        else{
+            alert("Error")
+        }
         
     };
     

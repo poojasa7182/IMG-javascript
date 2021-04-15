@@ -17,7 +17,7 @@ function validateName(){
         producePrompt("Name is required!!" , "namePrompt" , "red");
         return false;
     }
-    if(!name.match(/^[a-zA-Z\s]+$/)){
+    if(!name.match(/^[a-zA-Z\s']+$/)){
         producePrompt("Invalid Name!!" , "namePrompt" , "red");
         return false;
     }
@@ -34,7 +34,7 @@ function validateEmail(){
         producePrompt("Email is required!!" , "emailPrompt" , "red");
         return false;
     }
-    if(!email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+.([a-zA-Z0-9-]+)$/)){
+    if(!email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.([a-zA-Z0-9-]+)$/)){
         producePrompt("Invalid Email!!" , "emailPrompt" , "red");
         return false;
     }
@@ -118,6 +118,10 @@ function validatePhnNo(){
         producePrompt("Phone number is required!!" , "phnNoPrompt" , "red");
         return false;
     }
+    if(phn.length>10){
+        producePrompt("Invalid Phone Number!!" , "phnNoPrompt" , "red");
+        return false;
+    }
     if(!phn.match(/^[0-9]+$/)){
         producePrompt("Invalid format" , "phnNoPrompt" , "red");
         return false;
@@ -135,7 +139,7 @@ function validateCity(){
         producePrompt("City is required!!" , "cityPrompt" , "red");
         return false;
     }
-    if(!city.match(/^[a-zA-Z]+$/)){
+    if(!city.match(/^[a-zA-Z\s]+$/)){
         producePrompt("Invalid format" , "cityPrompt" , "red");
         return false;
     }
