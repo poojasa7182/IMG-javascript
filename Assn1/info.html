@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="info.css">
     </head>
     <body style="font-size: 50px;">
-        <form>
+        <form name="forms">
             <div>
                 Name:
                 <input id="name" class="inputs" onkeyup="validateName()" type="text" name="name" >
@@ -27,7 +27,7 @@
                 <label id="coPassPrompt"></label>
             </div>
             <div>
-                <label for="Gender">Gender:</label><br>
+                <label for="Gender">Gender:</label><br> <label id="genPrompt"></label>
                 <input type="radio" id="male" name="gender" value="male">
                 <label for="male">Male</label><br>
                 <input type="radio" id="female" name="gender" value="female">
@@ -51,7 +51,7 @@
                 <label id="phnNoPrompt"></label>
             </div>
                 <label for="Edu. Qualification">Educational Qualification:</label>
-                <input list="browsers" name="Educational">
+                <input list="browsers" id="edu" name="Educational" onkeyup="validateEdu"><label id="eduPrompt"></label>
                 <datalist id="browsers">
                     <option value="B.Tech">
                     <option value="B.Com">
@@ -59,7 +59,7 @@
                     <option value="Phd">
                 </datalist>
             <div>
-                <button type="submit">Submit</button>
+                <button type="submit" onclick="validate()">Submit</button>
             </div>
         </form>
         <script src="info.js"></script>

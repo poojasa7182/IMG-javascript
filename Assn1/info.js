@@ -34,7 +34,7 @@ function validateEmail(){
         producePrompt("Email is required!!" , "emailPrompt" , "red");
         return false;
     }
-    if(!email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.([a-zA-Z0-9-.]+)$/)){
+    if(!email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.([a-zA-Z0-9-.]+)[a-zA-Z]$/)){
         producePrompt("Invalid Email!!" , "emailPrompt" , "red");
         return false;
     }
@@ -148,4 +148,36 @@ function validateCity(){
         return true;      
     }
 }
+//Edu
+function validateEdu(){
+    var edu = document.getElementById("edu").value;
+    if(edu.length==0){
+        producePrompt("Educational Qualification is required!!" , "eduPrompt" , "red");
+        return false;
+    }
+    else{
+        nowOk("eduPrompt");
+        return true;      
+    }
+}
 //gender
+function validateGen(){
+    var gen = document.forms["forms"]["gender"];
+    if(gen[0].checked==false&&gen[1].checked==false&&gen[2].checked==false){
+        producePrompt("Gender is required!!" , "genPrompt" , "red");
+        return false;
+    }
+    else{
+        nowOk("genPrompt");
+        return true;      
+    }
+}
+//validate all
+function validate(){
+    if(validateGen()&&validateEdu()&&validateCity()&&validatePhnNo()&&validateAge()&&validateCoPass()&&validatePass()&&validateEmail()&&validateName()){
+
+    }
+    else{
+        alert("All fields not filled")
+    }
+}
