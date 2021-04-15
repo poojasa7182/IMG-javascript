@@ -9,14 +9,21 @@
         <script>
             var newWindow = [];  
             function fn1(){ 
-                newWindow[0] = window.open("https://www.google.com/", "_blank", "width=200px", "height=200px","postion:absolute","top:0");
-                newWindow[1] = window.open("https://www.google.com/", "_blank", "width=200px", "height=200px","postion:absolute","bottom:0");
-                newWindow[2] = window.open("https://www.google.com/", "_blank", "width=200px", "height=200px","postion:absolute","top:0","right=0");
-                newWindow[3] = window.open("https://www.google.com/", "_blank", "width=200px", "height=200px","postion:absolute","top:30%","left=30%");
-                newWindow[4] = window.open("https://www.google.com/", "_blank", "width=200px", "height=200px","postion:absolute","bottom:0","right=0");     
+                var a = screen.height -200;
+                var b = screen.width-200;
+                var c = a/2;
+                var d = b/2;
+                var e = (Math.random()*(screen.height))-200;
+                var f = (Math.random()*(screen.width))-200;
+                newWindow[0] = window.open("https://www.google.com/", "_blank", "width=200,height=200,top=0");
+                newWindow[1] = window.open("https://www.google.com/", "_blank", "width=200,height=200,top="+a);
+                newWindow[2] = window.open("https://www.google.com/", "_blank", "width=200,height=200,top=0,left="+b);
+                newWindow[3] = window.open("https://www.google.com/", "_blank", "width=200,height=200,top="+c+",left="+d);
+                newWindow[4] = window.open("https://www.google.com/", "_blank", "width=200,height=200,top="+a+",left="+b);
+                newWindow[5] = window.open("https://www.google.com/", "_blank", "width=200,height=200,top="+e+",left="+f);     
             }
             function fn2() {   
-                for(var i = 0 ; i <5 ; i++){
+                for(var i = 0 ; i <6 ; i++){
                     newWindow[i].close();
                 }
                    
