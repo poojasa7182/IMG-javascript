@@ -4,23 +4,74 @@
         <title>Assignment16</title>
     </head>
     <body style="color: white;">
-
+        <p style="color: black;">Move your cusor over the balls to start.</p>
         <div class="row1 row">
             vhr x
-            <img src="marble1.jpg">
-            <img src="marble1.jpg">
+            <img id="marb1" class="marb" src="marble1.jpg" onmouseover="stop()" onmouseout="start()">
+            <img id="marb2" class="marb" src="marble1.jpg" onmouseover="stop()" onmouseout="start()">
         </div>
-        <div class="row1 row">
-            <img src="marble1.jpg">
-            <img src="marble1.jpg">
-            <img src="marble1.jpg">
+        <div class="row2 row">
+            <img id="marb3" class="marb" src="marble1.jpg" onmouseover="stop()" onmouseout="start()">
+            <img id="marb7" src="marble1.jpg" onmouseover="stop()" onmouseout="start()">
+            <img id="marb4" class="marb" src="marble1.jpg" onmouseover="stop()" onmouseout="start()">
         </div>
-        <div class="row1 row">
+        <div class="row3 row">
             vhr x
-            <img src="marble1.jpg">
-            <img src="marble1.jpg">
+            <img id="marb5" class="marb" src="marble1.jpg" onmouseover="stop()" onmouseout="start()">
+            <img id="marb6" class="marb" src="marble1.jpg" onmouseover="stop()" onmouseout="start()">
         </div>
+            <img id="extra" style="position:absolute;" src="marble2.jpg" onmouseover="stop()" onmouseout="start()">
+        <!-- <button id="start" onclick="animate()">Start</button> -->
+       
         <script>
+            var b = true;
+            var i = 0;
+            var blue = document.getElementById("extra");
+            var pos = document.querySelectorAll(".marb");
+            var result;
+            var posi = [];
+            posi[0]=pos[0];
+            posi[1]=pos[1];
+            posi[2]=pos[3];
+            posi[3]=pos[5];
+            posi[4]=pos[4];
+            posi[5]=pos[2];
+            function stop(){
+                clearTimeout(result);
+                b=false;
+                check();
+            }
+            function start(){
+                clearTimeout(result);
+                b=true;
+                check();
+            }
+            function check(){
+                clearTimeout(result);
+                if(b==true){
+                    animate();
+                }
+                else{
+                    var j = posi[i];
+                    blue.style.top = j.offsetTop+'px';
+                    blue.style.left = j.offsetLeft+'px';
+                }
+            }
+            function animate(){
+                result = setTimeout(function(){
+                                if(i==6){
+                                    i=0;
+                                }
+                                //console.log(i);
+                                var j = posi[i];
+                                //console.log(j.offsetTop);
+                                blue.style.top = j.offsetTop+"px";
+                                blue.style.left = j.offsetLeft+"px";
+                                i++;
+                                check();
+                            },1000)
+                
+            }
         </script>
     </body>
 </html>

@@ -2,16 +2,39 @@
 <html>
     <head>
         <title>Assignment7</title>
+        <style>
+            div{
+                display: inline;
+            }
+        </style>
     </head>
     <body>
-        <script>
-            var name = prompt("Please enter yur name");
-            var w1 = prompt("Enter a word");
-            var w2 = prompt("Enter a word");
-            var w3 = prompt("Enter a word");
-            var w4 = prompt("Enter a word");
-            var w5 = prompt("Enter a word");
-            document.write("bkbuiobnio<div style=\"background-color:yellow\" >"+ w1 +"</div>lnkln;nkk;nk"+"<div style=\"background-color:yellow\" >"+ w2 +"</div>"+"<div style=\"background-color:yellow\" >"+ w3 +"</div>"+"<div style=\"background-color:yellow\" >"+ w4 +"</div>"+"<div style=\"background-color:yellow\" >"+ w5 +"</div>")
+        <h1 id="name"> </h1>
+
+    <div class="para" >
+        Google LLC is an <div id="word1"></div> multinational technology company that<div id="word2"></div> specializes in Internet-related<div id="word3"></div> services and products, which include online <div id="word4"></div>advertising technologies, a search engine, cloud computing, <div id="word5"></div>software, and hardware.
+    </div>
+
+    
+    
+    <script>
+        var name=prompt("Please enter your name.");
+        var word=[];
+        for(let i=0;i<5;i++){
+            word.push(prompt("Please enter word "+(i+1)));
+        }
+        var color=prompt("Please specify a color(one of the 16 named colors or a hex value)");
+        let tag=document.getElementById("name");
+        let text=document.createTextNode("Hello "+name +" !");
+        tag.appendChild(text);
+        for(var i = 0 ; i < 5 ; i++){
+            var id = "word"+(i+1);
+            let tag1=document.getElementById(id);
+            let text1=document.createTextNode(word[i]);
+            tag1.appendChild(text1);
+            tag1.style.backgroundColor=color;
+
+        }        
         </script>
     </body>
 </html>
