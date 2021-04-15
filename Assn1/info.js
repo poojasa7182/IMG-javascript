@@ -34,7 +34,7 @@ function validateEmail(){
         producePrompt("Email is required!!" , "emailPrompt" , "red");
         return false;
     }
-    if(!email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.([a-zA-Z0-9-]+)$/)){
+    if(!email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.([a-zA-Z0-9-.]+)$/)){
         producePrompt("Invalid Email!!" , "emailPrompt" , "red");
         return false;
     }
