@@ -53,7 +53,7 @@ function load(id , url){
                 document.getElementById(id).appendChild(mainDiv);
             }
         }
-        else{
+        if(ajaxObject.readyState==4 && ajaxObject.status!=200){
             alert("Error")
         }
         

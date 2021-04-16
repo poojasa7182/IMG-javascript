@@ -23,7 +23,7 @@ function load(){
                 let response = JSON.parse(this.response);
                 alert("The tokken is:"+response["token"])
             }
-            else{
+            if(ajaxObject.readyState==4 && ajaxObject.status!=200){
                 alert("error");
             }
         }

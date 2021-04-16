@@ -118,7 +118,7 @@ function validatePhnNo(){
         producePrompt("Phone number is required!!" , "phnNoPrompt" , "red");
         return false;
     }
-    if(!phn.match(/^(((\+91)?\s*(-)?\s*)|(0?)|((91)?\s*(-)\s*))[6789][0-9]{9}$/)){
+    if(!phn.match(/^(((\+91)?\s?(-)?\s?)|(0?)|((91)?\s?(-)?\s?))[6789][0-9]{9}$/)){
         producePrompt("Invalid format" , "phnNoPrompt" , "red");
         return false;
     }
