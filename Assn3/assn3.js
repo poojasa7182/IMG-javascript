@@ -10,7 +10,7 @@ function load(){
     let email = document.getElementById("Email");
     let pass = document.getElementById("password");
     var emailE = email.value;
-    if(!emailE.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+.([a-zA-Z0-9-]+)$/)){
+    if(!emailE.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.([a-zA-Z0-9-.]+)[a-zA-Z]$/)){
         producePrompt("Invalid Email format!!" , "emailPrompt" , "red");
         return false;
     }
