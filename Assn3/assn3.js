@@ -11,13 +11,13 @@ function load(){
     let pass = document.getElementById("password");
     var emailE = email.value;
     if(!emailE.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+.([a-zA-Z0-9-]+)$/)){
-        producePrompt("Invalid Email!!" , "emailPrompt" , "red");
+        producePrompt("Invalid Email format!!" , "emailPrompt" , "red");
         return false;
     }
     else{
         nowOk("emailPrompt");
-        if(emailE=="eve.holt@reqres.in"&&pass.value=="cityslicka"){
-            let xhttp = new XMLHttpRequest();
+        //if(emailE=="eve.holt@reqres.in"&&pass.value=="cityslicka"){
+        let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function(){
             if(xhttp.readyState==4 && xhttp.status==200){
                 let response = JSON.parse(this.response);
@@ -31,10 +31,10 @@ function load(){
         xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded')
         xhttp.send(`email=${emailE}&password=${pass.value}`)
         return true;
-        }
-        else{
-            alert("invalid credentials");
-        }
+        //}
+        // else{
+        //     alert("invalid credentials");
+        // }
         
     }  
 }

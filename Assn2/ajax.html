@@ -2,6 +2,26 @@
 <html>
     <head>
         <title>Assignment2</title>
+        <style>
+            #loadHere{
+                /* display: flex;
+                flex-wrap: wrap; */
+            }
+            .content{
+                display: grid;
+                grid-template-rows: 1fr ;
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+                margin: 5%;
+                align-items: center;
+                border: 2px solid black;
+                text-align: center;
+                min-height: 200px;
+                font-size: 50px;
+            }
+            .content1{
+
+            }
+        </style>
     </head>
     <body>
         <button onclick="load('loadHere','https://reqres.in/api/users')">Load Ajax Content</button>

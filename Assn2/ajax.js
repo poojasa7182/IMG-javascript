@@ -28,28 +28,34 @@ function load(id , url){
             for(let i =  0 ; i < (siteData_data).length ; i++){
                 let mainDiv = document.createElement("div");
                 
+                let childDiv5 = document.createElement("div");
+                childDiv5.innerHTML=siteData_data[i].id;
+                mainDiv.appendChild(childDiv5);
+                childDiv5.className="content5";
+                
                 let childDiv1 = document.createElement("div");
                 childDiv1.innerHTML=siteData_data[i].first_name;
                 mainDiv.appendChild(childDiv1);
+                childDiv1.className="content1";
                 
                 let childDiv2 = document.createElement("div");
                 childDiv2.innerHTML=siteData_data[i].last_name;
                 mainDiv.appendChild(childDiv2);
+                childDiv2.className="content2";
 
                 let childDiv3 = document.createElement("div");
                 childDiv3.innerHTML=siteData_data[i].email;
                 mainDiv.appendChild(childDiv3);
+                childDiv3.className="content3";
 
                 let childDiv4 = document.createElement("div");
                 let photo = document.createElement("img");
                 photo.src = siteData_data[i].avatar;
                 childDiv4.appendChild(photo);
                 mainDiv.appendChild(childDiv4);
+                childDiv4.className="content4";
 
-                let childDiv5 = document.createElement("div");
-                childDiv5.innerHTML=siteData_data[i].id;
-                mainDiv.appendChild(childDiv5);
-
+                mainDiv.className="content";
                 document.getElementById(id).appendChild(mainDiv);
             }
         }
