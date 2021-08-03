@@ -25,6 +25,9 @@ class Person:
       self.city = city
       if(work is not None):
          self.work = work
+      else:
+         work=[]
+         self.work=None
    
    def show(self):
       print("My name is " + self.name +" and my current city is " + self.city)
@@ -32,7 +35,7 @@ class Person:
    def update(self,username):
       cursor = db.cursor()
       cursor.execute("UPDATE info SET name=%s,work=%s,city=%s WHERE username=%s", (str(self.name), json.dumps(self.work), str(self.city), username))
-
+      db.commit()
 
 def printDictionary(username):
    chrome_options = Options()
@@ -44,7 +47,7 @@ def printDictionary(username):
    time.sleep(2)
 
    usedriver.get("https://m.facebook.com/"+username+"/about/")
-   usedriver.find_element(By.XPATH, '//*[@id="mobile_login_bar"]/div[2]/a[2]').click()
+   # usedriver.find_element(By.XPATH, '//*[@id="mobile_login_bar"]/div[2]/a[2]').click()
    
    time.sleep(2)
 
@@ -130,11 +133,12 @@ def check(func):
    def inner(username):
       
       cursor = db.cursor()
-      cursor.execute("INSERT INTO info(username) VALUES ('pooja1')")
+      # cursor.execute("INSERT INTO info(username) VALUES ('pooja1')")
+      # db.commit()
       sql = ("SELECT * FROM user where username=\'"+username+"\'")
       sql1 = ("SELECT * FROM info where username=\'"+username+"\'")
       cursor.execute(sql)
-         # Fetch all the rows in a list of lists.
+
       results = cursor.fetchall()
       cursor.execute(sql1)
       results1 = cursor.fetchall()
@@ -149,7 +153,7 @@ def check(func):
       if(ch==True):
          if(ch1==True):
             for row in results1:
-               obj = Person(row['name'],row['city'],row['work'])
+               obj = Person(row[1],row[2],row[3])
                obj.show()
                
          else: 
@@ -167,12 +171,15 @@ def scrap(username):
    r = requests.get(URL,cookies= {'googletrans': '/es/en'},headers=headers)
    soup = BeautifulSoup(r.content, 'html5lib')
    # print(soup.prettify())
+   
    table = soup.findAll('div',attrs={'class':'_55wo _2xfb _1kk1'})
    work = []
    place = ""
    i = 0
    name = "abc"
-   name = soup.find('h3',attrs={'class':'_391s'}).text
+   name = soup.findAll('h3')
+   for row in name:
+      print(row.text)
    # print(name)
    for row in table:
       table1 = soup.findAll('div',attrs={'class':'_55wo _2xfb _1kk1'})[i]
@@ -185,6 +192,7 @@ def scrap(username):
          if(row=='वास्‍तव्‍य केलेली ठिकाणे'):
                place = (table1.h4.text)
       i = i + 1
+   # print(place)
    if(work!=[]):
       if(place!=""):
          obj = Person(name,place,work)
@@ -199,4 +207,4 @@ def scrap(username):
    obj.update(username)
    printDictionary(username)
 
-scrap('anshul.d.sharma.7')
+scrap('radhikagarg1601')
