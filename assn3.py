@@ -165,6 +165,7 @@ def check(func):
 
 @check
 def scrap(username):
+   printDictionary(username)
    URL= "https://m.facebook.com/"+username+"/about/"
    # login(username)
    headers = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:66.0) Gecko/20100101 Firefox/66.0", "Accept-Encoding":"gzip, deflate", "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", "DNT":"1","Connection":"close", "Upgrade-Insecure-Requests":"1"}
@@ -177,9 +178,9 @@ def scrap(username):
    place = ""
    i = 0
    name = "abc"
-   name = soup.findAll('h3')
-   for row in name:
-      print(row.text)
+   name = soup.find('h3',attrs={'class':'_391s'}).text
+   # for row in name:
+   #    print(row.text)
    # print(name)
    for row in table:
       table1 = soup.findAll('div',attrs={'class':'_55wo _2xfb _1kk1'})[i]
