@@ -47,7 +47,7 @@ def printDictionary(username):
    time.sleep(2)
 
    usedriver.get("https://m.facebook.com/"+username+"/about/")
-   # usedriver.find_element(By.XPATH, '//*[@id="mobile_login_bar"]/div[2]/a[2]').click()
+   usedriver.find_element(By.XPATH, '//*[@id="mobile_login_bar"]/div[2]/a[2]').click()
    
    time.sleep(2)
 
@@ -121,10 +121,18 @@ def printDictionary(username):
             break
          else:
             height_prev = height_new
+            
+      d = usedriver.find_elements(By.XPATH, '//*[@class="__gx"]/div/div[1]')
+      for ele in d:
+         print(ele.text)
       length1 = len(usedriver.find_elements(By.XPATH, '/html/body/div[1]/div[1]/div[4]/div/div/div/div/div/div/div/div/div[*]'))
       for j in range(length1):
          for ele in usedriver.find_elements(By.XPATH, '/html/body/div[1]/div[1]/div[4]/div/div/div/div/div/div/div/div/div['+str(j+1)+']/div[*]/div/span'):
             fav.append(ele.text)
+      # for ele in usedriver.find_elements(By.XPATH, '/html/body/div[1]/div[1]/div[4]/div/div[1]/div/div/div/div/div/div/div/div[*]/a/div/div[2]/div[1]/strong'):
+      #    fav.append(ele.text)
+      for ele in usedriver.find_elements(By.XPATH, '//body//strong'):
+         fav.append(ele.text)
       print(fav)
       time.sleep(10)
       usedriver.find_element(By.XPATH, '/html/body/div[1]/div[1]/div[2]/div/div[3]/a').click()
@@ -144,8 +152,10 @@ def check(func):
       results1 = cursor.fetchall()
       ch = False
       ch1 = False
+      
       for row in results:
          ch = True
+      
       for row in results1:
          if(row[1]!=None):
             ch1 = True
@@ -155,9 +165,9 @@ def check(func):
             for row in results1:
                obj = Person(row[1],row[2],row[3])
                obj.show()
-               
+               return "Already Scrapped"
          else: 
-            func(username)
+            return func(username)
       else:
          raise ValueError('username is not valid!')
             
@@ -165,7 +175,7 @@ def check(func):
 
 @check
 def scrap(username):
-   printDictionary(username)
+   
    URL= "https://m.facebook.com/"+username+"/about/"
    # login(username)
    headers = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:66.0) Gecko/20100101 Firefox/66.0", "Accept-Encoding":"gzip, deflate", "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", "DNT":"1","Connection":"close", "Upgrade-Insecure-Requests":"1"}
@@ -206,6 +216,8 @@ def scrap(username):
          obj = Person(name=name)
    obj.show()
    obj.update(username)
-   printDictionary(username)
+   #comment out printDictionary for printing the dictionary of favourties
+   #printDictionary(username)
+   return "Done"
 
-scrap('radhikagarg1601')
+# print(scrap('ritvik.jain.52206'))
