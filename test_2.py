@@ -1,12 +1,12 @@
 import unittest
-import hi
+import assn2
 
 class test_matrix_functions(unittest.TestCase):
 
-    mat1 = hi.matrix([(12,7,3),(4 ,5,6),(7 ,8,9)])
-    mat2 = hi.matrix([(5,8,1),(6,7,3),(4,5,9)])
-    mat3 = hi.matrix([(1, 2), (4, 5), (3, 6)])
-    mat4 = hi.matrix([(1,2,3),(4,5,6)])
+    mat1 = assn2.matrix([(12,7,3),(4 ,5,6),(7 ,8,9)])
+    mat2 = assn2.matrix([(5,8,1),(6,7,3),(4,5,9)])
+    mat3 = assn2.matrix([(1, 2), (4, 5), (3, 6)])
+    mat4 = assn2.matrix([(1,2,3),(4,5,6)])
 
     def test_add(self):
         r1 = self.mat1 + self.mat2

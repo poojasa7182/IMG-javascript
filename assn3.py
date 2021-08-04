@@ -5,14 +5,13 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import time
-import json
 from selenium.webdriver.chrome.options import Options
 import passfile
 
 db = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="@Adipoo2610",
+    password=passfile.passw,
     database="pythonpro",
     auth_plugin="mysql_native_password"
 )
@@ -30,11 +29,11 @@ class Person:
          self.work=None
    
    def show(self):
-      print("My name is " + self.name +" and my current city is " + self.city)
+      return ("My name is " + self.name +" and my current city is " + self.city)
 
    def update(self,username):
       cursor = db.cursor()
-      cursor.execute("UPDATE info SET name=%s,work=%s,city=%s WHERE username=%s", (str(self.name), json.dumps(self.work), str(self.city), username))
+      cursor.execute("UPDATE info SET name=%s,work=%s,city=%s WHERE username=%s", (str(self.name), str(self.work), str(self.city), username))
       db.commit()
 
 def printDictionary(username):
@@ -173,6 +172,34 @@ def check(func):
             
    return inner
 
+def find_work(soup,table):
+   work=[]
+   i = 0
+   for row in table:
+      table1 = soup.findAll('div',attrs={'class':'_55wo _2xfb _1kk1'})[i]
+      for row in table1.find('div',attrs={'class':'__gx'}):
+         if(row=='कार्य'):
+            a = table1.findAll('div',attrs={'class':'_2pir c'})
+            for row in a :
+               work.append((row).text)
+      i = i + 1
+   return work
+
+def find_city(soup,table):
+   place=""
+   i = 0
+   for row in table:
+      table1 = soup.findAll('div',attrs={'class':'_55wo _2xfb _1kk1'})[i]
+      for row in table1.find('div',attrs={'class':'__gx'}):
+         if(row=='वास्‍तव्‍य केलेली ठिकाणे'):
+               place = (table1.h4.text)
+      i = i + 1
+   return place
+
+def find_name(soup):
+   name = soup.find('h3',attrs={'class':'_391s'}).text
+   return name
+
 @check
 def scrap(username):
    
@@ -186,24 +213,12 @@ def scrap(username):
    table = soup.findAll('div',attrs={'class':'_55wo _2xfb _1kk1'})
    work = []
    place = ""
-   i = 0
    name = "abc"
-   name = soup.find('h3',attrs={'class':'_391s'}).text
-   # for row in name:
-   #    print(row.text)
-   # print(name)
-   for row in table:
-      table1 = soup.findAll('div',attrs={'class':'_55wo _2xfb _1kk1'})[i]
-
-      for row in table1.find('div',attrs={'class':'__gx'}):
-         if(row=='कार्य'):
-            a = table1.findAll('div',attrs={'class':'_2pir c'})
-            for row in a :
-               work.append((row).text)
-         if(row=='वास्‍तव्‍य केलेली ठिकाणे'):
-               place = (table1.h4.text)
-      i = i + 1
-   # print(place)
+  
+   work = find_work(soup=soup,table=table)
+   place = find_city(soup=soup,table=table)
+   name = find_name(soup=soup)
+   
    if(work!=[]):
       if(place!=""):
          obj = Person(name,place,work)
@@ -220,4 +235,5 @@ def scrap(username):
    #printDictionary(username)
    return "Done"
 
-# print(scrap('ritvik.jain.52206'))
+# (scrap('ritvik.jain.52206'))
+
