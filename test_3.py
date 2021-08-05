@@ -3,6 +3,16 @@ import assn3
 from unittest import TestCase
 import requests
 from bs4 import BeautifulSoup
+import mysql.connector
+import passfile
+
+db = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password=passfile.passw,
+    database="pythonpro",
+    auth_plugin="mysql_native_password"
+)
 
 class test_users(unittest.TestCase):
 
@@ -49,6 +59,9 @@ class test_users(unittest.TestCase):
         obj = assn3.Person(name="Pooja",city="Nanded",work=["IMG"])
         res = obj.show()
         self.assertEqual(res,"My name is Pooja and my current city is Nanded")
+    
+   
+
         
 if __name__ == '__main__':
     unittest.main()

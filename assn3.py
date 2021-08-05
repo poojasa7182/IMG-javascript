@@ -29,6 +29,7 @@ class Person:
          self.work=None
    
    def show(self):
+      print("My name is " + self.name +" and my current city is " + self.city)
       return ("My name is " + self.name +" and my current city is " + self.city)
 
    def update(self,username):
@@ -232,8 +233,8 @@ def scrap(username):
    obj.show()
    obj.update(username)
    #comment out printDictionary for printing the dictionary of favourties
-   #printDictionary(username)
+   # printDictionary(username)
    return "Done"
 
-# (scrap('ritvik.jain.52206'))
+(scrap('rishi.ranjan.54966'))
 
