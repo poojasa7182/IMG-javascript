@@ -1,0 +1,29 @@
+<!-- <h1>Hi</h1> -->
+<h1>{{ todolist.list_name }}</h1>
+<form action="{% url 'polls:item_update' list_id=todolist.id item_id=list_item.id %}" method="POST">
+    {% csrf_token %}
+    <fieldset>
+
+        <h2>Update List Item</h2>
+        Title:
+        <input type="text" name="title" value="{{list_item.title}}" id="title">
+        <br>
+        <br>
+        Completed:
+        <input type="checkbox" name="check_box" id="check_box" {{check_box_value}}>
+        <br>
+        <br>
+        Due date and time:
+        <input type="datetime-local" name="date_time"   value="{{date_time_dis}}" id="time">
+        <br>
+        <br>
+        List-name:
+        <input name="name" value= "{{ todolist.list_name }}" readonly>
+        <br>
+        <br>
+        <input type="submit">
+    </fieldset>
+    
+
+</form>
+<button><a href="/polls/{{todolist.id}}">Back to list items.</a></button>

@@ -1,0 +1,17 @@
+<h1>{{ todolist.list_name }}</h1>
+<button><a href="/polls/{{todolist.id}}/create">Create a new list item.</a></button>
+<ul>
+
+    {% for item in items_list %}
+
+    <li>
+        {{item.title}}:{{item.due_date}},{{item.checked}}
+        <a href="/polls/{{todolist.id}}/{{item.id}}/delete">delete</a>
+        <a href="/polls/{{todolist.id}}/{{item.id}}/update">update</a>
+        <br>
+        <br>
+    </li>
+
+    {% endfor %}
+</ul>
+<button><a href="/polls">Back to list view.</a></button>

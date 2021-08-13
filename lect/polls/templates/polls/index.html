@@ -1,0 +1,25 @@
+
+<h1>Your To Do items</h1>
+<br>
+<button><a href= "/polls/create" >Create a new list.</a></button>
+{% if todolists %}
+
+    <ul>
+        {% for todolist in todolists %}
+        <br>
+        <div style="border: 2px solid black; display: flex; height: 30px; align-items: baseline; width: 60%" >
+            <div style="width: 90%;">
+                <li style="font-size:20px;"><a href="/polls/{{todolist.id}}">{{todolist.list_name}}</a></li>
+            </div>
+            <div style="justify-self: flex-end;">
+                <a href="/polls/{{todolist.id}}/delete">delete</a>
+            </div>
+            <br>
+            
+        </div>
+        {% endfor %}
+        
+        
+    </ul>
+
+{% endif %}
